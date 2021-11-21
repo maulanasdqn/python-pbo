@@ -8,7 +8,6 @@ makanan = [
 ]
 
 minuman = [
-
     Minuman("Jus", 10, 3000, "Jeruk"),
     Minuman("Coffe", 10, 3000, "Mocachino")
 ]
@@ -19,27 +18,30 @@ def Menu():
     i = 0
     y = "y"
     while y == "y":
-        i += 1 
+
+        i =+ 1 
         nama = str(input("Masukan Nama Anda : "))
         uang = int(input("Masukan Jumlah Uang Anda : "))
-        jumlah = int(input("Masukan Jumlah Pesanan : "))
-        level = int(input("Masukan Level kepedasan : "))
+
         for i,x in enumerate(makanan):
             print (f"{i+1}.{x.getName()} Rp.{x.getPrice()}")
 
         pilih = int(input("Silahkan Pilih Menu : "))
+        jumlah = int(input("Masukan Jumlah Pesanan : "))
+        level = int(input("Masukan Level kepedasan : "))
 
         if pilih == 1:
             menu = makanan[0]
         elif pilih == 2:
             menu = makanan[1]
 
-        i.Beli(nama, uang)
+        i = Beli(nama, uang)
         i.buyFood(menu, jumlah, level)
+        i.setInfoBuyerFood(nama, menu, jumlah, level)
         pembeli.append(i)
         y = input("Masuk : ")
-        
 
-    
+    for i,x in enumerate(pembeli):
+        print (f"{i+1}.{x.infoBuyerFood()}")
 
 Menu()
